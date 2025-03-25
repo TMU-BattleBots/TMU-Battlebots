@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Battle Bots Arsenal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <img src="images/logo.png" alt="Battle Bots Logo">
+          <span>Battle Bots Arsenal</span>
+        </div>
+        <div class="menu">
+          <a href="#home">Home</a>
+          <a href="#arsenal">Arsenal</a>
+          <a href="#calculator">Calculator</a>
+          <a href="#github">GitHub</a>
+        </div>
+        <button class="mobile-menu-btn">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Our Combat Robots</h1>
+        <p>Check out the battle bots we've designed and built as a team for competitions!</p>
+        <a href="#arsenal" class="btn btn-primary">View Our Robots</a>
+        <a href="#calculator" class="btn btn-secondary">Robot Calculator</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="arsenal" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Our Robot Arsenal</h2>
+        <p class="section-subtitle">Browse our collection of combat robots across different weight classes</p>
+      </div>
+
+      <div class="filters">
+        <button class="filter-btn active" data-category="all">All Bots</button>
+        <button class="filter-btn" data-category="1lb">1lb Class</button>
+        <button class="filter-btn" data-category="3lb">3lb Class</button>
+        <button class="filter-btn" data-category="30lb">30lb Class</button>
+      </div>
+
+      <div class="bots-grid">
+        <!-- Bot cards will be generated here by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <section id="calculator" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Combat Robot Calculator</h2>
+        <p class="section-subtitle">Tools we developed to help design and optimize our robots</p>
+      </div>
+
+      <div class="calculator-options">
+        <div class="calculator-option">
+          <div class="calculator-card">
+            <div class="calculator-icon">🔧</div>
+            <h3>Basic Calculator</h3>
+            <p>Quick calculations for motor power, weapon energy, and basic specifications.</p>
+            <div class="calculator-features">
+              <span>Motor KV to RPM</span>
+              <span>Battery configuration</span>
+              <span>Weight class optimization</span>
+            </div>
+            <button id="show-basic-calc" class="btn btn-primary">Open Basic Calculator</button>
+          </div>
+        </div>
+        
+        <div class="calculator-option">
+          <div class="calculator-card featured">
+            <div class="calculator-icon">⚡</div>
+            <div class="featured-badge">Advanced</div>
+            <h3>Interactive Simulator</h3>
+            <p>Advanced simulator with weapon system, drivetrain and armor calculations.</p>
+            <div class="calculator-features">
+              <span>Interactive visual design</span>
+              <span>Armor impact resistance</span>
+              <span>Drive system simulations</span>
+            </div>
+            <a href="https://combat-robotics-simulation.vercel.app/" target="_blank" class="btn btn-secondary">Open Full Simulator</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="basic-calculator" class="calculator" style="display: none;">
+        <h3>Motor & Weapon Configuration</h3>
+        <div class="form-group">
+          <label for="robot-weight">Robot Weight (lbs)</label>
+          <input type="number" id="robot-weight" class="form-control" placeholder="Enter weight">
+        </div>
+        <div class="form-group">
+          <label for="weapon-type">Weapon Type</label>
+          <select id="weapon-type" class="form-control">
+            <option value="spinner">Spinner</option>
+            <option value="hammer">Hammer</option>
+            <option value="flipper">Flipper</option>
+            <option value="crusher">Crusher</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="motor-kv">Motor KV Rating</label>
+          <input type="number" id="motor-kv" class="form-control" placeholder="Enter KV rating">
+        </div>
+        <div class="form-group">
+          <label for="battery-cells">Battery (S Rating)</label>
+          <select id="battery-cells" class="form-control">
+            <option value="2">2S LiPo</option>
+            <option value="3">3S LiPo</option>
+            <option value="4">4S LiPo</option>
+            <option value="6">6S LiPo</option>
+          </select>
+        </div>
+        <button id="calculate-btn" class="btn btn-primary">Calculate</button>
+
+        <div id="calculator-result" class="calculator-result" style="display: none;">
+          <div class="result-title">Results:</div>
+          <div id="result-content"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="github" class="section github">
+    <div class="container">
+      <div class="github-content">
+        <span class="github-logo">
+          <svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.477 2 2 6.477 2 12C2 16.423 4.865 20.1669 8.838 21.489C9.338 21.5815 9.5 21.2715 9.5 21.0065V19.1505C6.73 19.7915 6.14 17.9915 6.14 17.9915C5.68 16.8115 5.03 16.5015 5.03 16.5015C4.12 15.8805 5.1 15.8915 5.1 15.8915C6.1 15.9665 6.63 16.9315 6.63 16.9315C7.5 18.4515 8.97 18.0415 9.54 17.7915C9.63 17.1615 9.89 16.7515 10.17 16.5315C7.95 16.3315 5.62 15.4515 5.62 11.5315C5.62 10.3915 6.01 9.46147 6.65 8.73147C6.55 8.47147 6.2 7.41147 6.75 6.01147C6.75 6.01147 7.59 5.74147 9.5 7.02147C10.29 6.79147 11.15 6.67147 12 6.67147C12.85 6.67147 13.71 6.79147 14.5 7.02147C16.41 5.74147 17.25 6.01147 17.25 6.01147C17.8 7.41147 17.45 8.47147 17.35 8.73147C17.99 9.46147 18.38 10.3915 18.38 11.5315C18.38 15.4615 16.04 16.3215 13.81 16.5215C14.17 16.7715 14.5 17.2615 14.5 18.0215V21.0065C14.5 21.2715 14.66 21.5815 15.17 21.489C19.135 20.1619 22 16.423 22 12C22 6.477 17.523 2 12 2Z" fill="#6b7280"/>
+          </svg>
+        </span>
+        <h2 class="section-title">Our Project Files</h2>
+        <p class="section-subtitle">Access our CAD files, code, and design documents on GitHub. Feel free to use our designs for your own projects.</p>
+        <a href="https://github.com/TMU-BattleBots" target="_blank" class="btn btn-primary">Visit Our GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="#home" class="footer-link">Home</a>
+        <a href="#arsenal" class="footer-link">Arsenal</a>
+        <a href="#calculator" class="footer-link">Calculator</a>
+        <a href="#github" class="footer-link">GitHub</a>
+      </div>
+
+      <div class="social-links">
+        <a href="#" class="social-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 12C22 6.48 17.52 2 12 2C6.48 2 2 6.48 2 12C2 16.84 5.44 20.87 10 21.8V15H8V12H10V9.5C10 7.57 11.57 6 13.5 6H16V9H14C13.45 9 13 9.45 13 10V12H16V15H13V21.95C18.05 21.45 22 17.19 22 12Z"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.46 6C21.69 6.35 20.86 6.58 20 6.69C20.88 6.16 21.56 5.32 21.88 4.31C21.05 4.81 20.13 5.16 19.16 5.36C18.37 4.5 17.26 4 16 4C13.65 4 11.73 5.92 11.73 8.29C11.73 8.63 11.77 8.96 11.84 9.27C8.28 9.09 5.11 7.38 3 4.79C2.63 5.42 2.42 6.16 2.42 6.94C2.42 8.43 3.17 9.75 4.33 10.5C3.62 10.5 2.96 10.3 2.38 10V10.03C2.38 12.11 3.86 13.85 5.82 14.24C5.46 14.34 5.08 14.39 4.69 14.39C4.42 14.39 4.15 14.36 3.89 14.31C4.43 16 6 17.26 7.89 17.29C6.43 18.45 4.58 19.13 2.56 19.13C2.22 19.13 1.88 19.11 1.54 19.07C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79C20.33 8.6 20.33 8.42 20.32 8.23C21.16 7.63 21.88 6.87 22.46 6Z"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 19.4 19.4 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2ZM7.6 4C5.61 4 4 5.61 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4C18.39 20 20 18.39 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6ZM17.25 5.5C17.94 5.5 18.5 6.06 18.5 6.75C18.5 7.44 17.94 8 17.25 8C16.56 8 16 7.44 16 6.75C16 6.06 16.56 5.5 17.25 5.5ZM12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 3C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19ZM18.5 18.5V13.2C18.5 12.3354 18.1565 11.5062 17.5452 10.8948C16.9338 10.2835 16.1046 9.94 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17C15.08 12.17 15.7 12.8 15.7 13.57V18.5H18.5Z"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="copyright">
+        &copy; 2025 Battle Bots Club. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bot Details Modal -->
+  <div id="bot-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title">Bot Details</h2>
+        <span class="close-modal">&times;</span>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Content will be dynamically inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html></svg>
+        </a>
+        <a href="#" class="social-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 19.4 19.4 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2ZM7.6 4C5.61 4 4 5.61 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4C18.39 20 20 18.39 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6ZM17.25 5.5C17.94 5.5 18.5 6.06 18.5 6.75C18.5 7.44 17.94 8 17.25 8C16.56 8 16 7.44 16 6.75C16 6.06 16.56 5.5 17.25 5.5ZM12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 3C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19ZM18.5 18.5V13.2C18.5 12.3354 18.1565 11.5062 17.5452 10.8948C16.9338 10.2835 16.1046 9.94 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17C15.08 12.17 15.7 12.8 15.7 13.57V18.5H18.5Z"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="copyright">
+        &copy; 2025 Battle Bots Arsenal. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bot Details Modal -->
+  <div id="bot-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title">Bot Details</h2>
+        <span class="close-modal">&times;</span>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Content will be dynamically inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
