@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<div class="bot-page">
+  <div class="bot-header">
+    <h1>{{ page.name }}</h1>
+    <span class="bot-category">{{ page.category }}</span>
+  </div>
+
+  <div class="bot-content">
+    <div class="bot-image">
+      <img src="{{ page.image }}" alt="{{ page.name }}">
+    </div>
+
+    <div class="bot-specs">
+      <h2>Specifications</h2>
+      <ul class="spec-list">
+        <li><span>Weight:</span> <span>{{ page.specs.weight }}</span></li>
+        <li><span>Dimensions:</span> <span>{{ page.specs.dimensions }}</span></li>
+        <li><span>Weapon:</span> <span>{{ page.specs.weapon }}</span></li>
+        <li><span>Motor:</span> <span>{{ page.specs.motor }}</span></li>
+        <li><span>Battery:</span> <span>{{ page.specs.batteryType }}</span></li>
+      </ul>
+
+      <div class="bot-links">
+        <a href="{{ page.githubLink }}" class="bot-link" target="_blank">GitHub Repository</a>
+        <h3>CAD Files</h3>
+        {% for file in page.cadFiles %}
+          <a href="#" class="bot-link">{{ file }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="bot-description">
+      {{ content }}
+    </div>
+  </div>
+
+  <div class="bot-navigation">
+    <a href="/" class="btn btn-primary">Back to All Bots</a>
+  </div>
+</div>

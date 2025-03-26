@@ -354,10 +354,14 @@
     padding: 1.5rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+      "image details"
+      "blog blog";
     gap: 2rem;
   }
   
   .modal-img {
+    grid-area: image;
     background-color: #374151;
     height: 300px;
     display: flex;
@@ -367,10 +371,39 @@
     overflow: hidden;
   }
   
+  .modal-details {
+    grid-area: details;
+  }
+
   .modal-details h3 {
     font-size: 1.25rem;
     margin-bottom: 1rem;
     color: var(--primary);
+  }
+
+  .modal-blog {
+    grid-area: blog;
+    margin-top: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid #374151;
+  }
+
+  .modal-blog h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+  }
+
+  .modal-blog h4 {
+    font-size: 1.2rem;
+    margin: 1.5rem 0 0.75rem;
+    color: var(--light);
+  }
+
+  .modal-blog p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #d1d5db;
   }
   
   .spec-list {
@@ -635,152 +668,10 @@
   
     .modal-body {
       grid-template-columns: 1fr;
-    }
-  
-    .section-title {
-      font-size: 2rem;
-    }
-  }
-    border: 1px solid #4b5563;
-    background-color: var(--dark);
-    color: var(--light);
-    font-size: 1rem;
-    transition: border-color 0.2s;
-  }
-  
-  .form-control:focus {
-    border-color: var(--primary);
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
-  }
-  
-  .calculator-result {
-    background-color: var(--dark);
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    margin-top: 1.5rem;
-    border-left: 4px solid var(--primary);
-  }
-  
-  .result-title {
-    font-weight: bold;
-    margin-bottom: 0.75rem;
-    color: white;
-    font-size: 1.1rem;
-  }
-  
-  .calculator-info {
-    margin-top: 4rem;
-    text-align: center;
-  }
-  
-  .calculator-info h3 {
-    font-size: 1.75rem;
-    margin-bottom: 2rem;
-    color: white;
-  }
-  
-  .info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-  }
-  
-  .info-item {
-    background-color: var(--dark-light);
-    padding: 2rem;
-    border-radius: 0.75rem;
-    transition: transform 0.3s;
-  }
-  
-  .info-item:hover {
-    transform: translateY(-5px);
-  }
-  
-  .info-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .info-item h4 {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-    color: white;
-  }
-  
-  .info-item p {
-    color: #d1d5db;
-  }
-  
-  /* Footer */
-  footer {
-    background-color: var(--dark-light);
-    padding: 3rem 0;
-    text-align: center;
-  }
-  
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .footer-link {
-    color: var(--gray);
-    transition: color 0.3s;
-  }
-  
-  .footer-link:hover {
-    color: var(--primary);
-  }
-  
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .social-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--dark);
-    color: var(--light);
-    font-size: 1.25rem;
-    transition: all 0.3s;
-  }
-  
-  .social-link:hover {
-    background-color: var(--primary);
-    transform: translateY(-3px);
-  }
-  
-  .copyright {
-    color: var(--gray);
-    font-size: 0.875rem;
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .menu {
-      display: none;
-    }
-  
-    .mobile-menu-btn {
-      display: block;
-    }
-  
-    .hero h1 {
-      font-size: 2.5rem;
-    }
-  
-    .modal-body {
-      grid-template-columns: 1fr;
+      grid-template-areas: 
+        "image"
+        "details"
+        "blog";
     }
   
     .section-title {

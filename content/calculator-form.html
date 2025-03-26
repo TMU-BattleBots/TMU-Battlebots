@@ -1,0 +1,43 @@
+<!-- This file would be included in the calculator.md file using the static site generator's include mechanism -->
+<div class="calculator-form" id="calculator-form">
+  <h3>Motor & Weapon Configuration</h3>
+  <div class="form-group">
+    <label for="robot-weight">Robot Weight (lbs)</label>
+    <input type="number" id="robot-weight" class="form-control" placeholder="Enter weight">
+  </div>
+  <div class="form-group">
+    <label for="weapon-type">Weapon Type</label>
+    <select id="weapon-type" class="form-control">
+      <option value="spinner">Spinner</option>
+      <option value="hammer">Hammer</option>
+      <option value="flipper">Flipper</option>
+      <option value="crusher">Crusher</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="motor-kv">Motor KV Rating</label>
+    <input type="number" id="motor-kv" class="form-control" placeholder="Enter KV rating">
+  </div>
+  <div class="form-group">
+    <label for="battery-cells">Battery (S Rating)</label>
+    <select id="battery-cells" class="form-control">
+      <option value="2">2S LiPo</option>
+      <option value="3">3S LiPo</option>
+      <option value="4">4S LiPo</option>
+      <option value="6">6S LiPo</option>
+    </select>
+  </div>
+  <button id="calculate-btn" class="btn btn-primary">Calculate</button>
+
+  <div id="calculator-result" class="calculator-result" style="display: none;">
+    <div class="result-title">Results:</div>
+    <div id="result-content"></div>
+  </div>
+</div>
+
+<!-- Note: In a real static site generator implementation, you would include this in calculator.md like this:
+{% include calculator-form.html %}
+
+And then in the page layout, you would include the JavaScript file:
+<script src="/assets/js/script.js"></script>
+-->
