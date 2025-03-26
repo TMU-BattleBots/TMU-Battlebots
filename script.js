@@ -216,6 +216,7 @@ const bots = [
     filteredBots.forEach(bot => {
       const botCard = document.createElement('div');
       botCard.className = 'bot-card';
+      botCard.setAttribute('data-id', bot.id);
       botCard.innerHTML = `
         <div class="bot-img">
           <img src="${bot.image}" alt="${bot.name}">
@@ -226,18 +227,23 @@ const bots = [
           <p class="bot-description">${bot.description}</p>
           <div class="bot-links">
             <a href="#" class="bot-link view-details" data-id="${bot.id}">View Details</a>
-            <a href="${bot.githubLink}" class="bot-link" target="_blank">GitHub</a>
+            <a href="${bot.githubLink}" class="bot-link github-link" target="_blank">GitHub</a>
           </div>
         </div>
       `;
       botsGrid.appendChild(botCard);
     });
   
-    // Add event listeners to the "View Details" links
-    document.querySelectorAll('.view-details').forEach(link => {
-      link.addEventListener('click', (e) => {
+    // Add event listeners to the entire bot cards
+    document.querySelectorAll('.bot-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        // If the GitHub link was clicked, don't open the modal
+        if (e.target.classList.contains('github-link') || e.target.closest('.github-link')) {
+          return;
+        }
+        
         e.preventDefault();
-        const botId = e.target.getAttribute('data-id');
+        const botId = card.getAttribute('data-id');
         openBotModal(botId);
       });
     });

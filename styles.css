@@ -244,6 +244,8 @@
     border-radius: 0.5rem;
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    position: relative;
   }
   
   .bot-card:hover {
@@ -293,10 +295,16 @@
   .bot-link {
     font-size: 0.875rem;
     color: var(--primary);
+    position: relative;
+    z-index: 10;
   }
   
   .bot-link:hover {
     text-decoration: underline;
+  }
+  
+  .github-link {
+    cursor: pointer;
   }
   
   /* Modal */
