@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Battle Bots Arsenal</title>
+  <title>TMU BattleBots</title>
   <link rel="icon" href="images/logo.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -12,31 +12,71 @@
     <div class="container">
       <nav>
         <div class="logo">
-          <img src="images/logo.png" alt="Battle Bots Logo">
-          <span>Battle Bots Arsenal</span>
+          <a href="#about">
+            <img src="images/logo.png" alt="Battle Bots Logo">
+            <span>TMU BattleBots</span>
+          </a>
         </div>
         <div class="menu">
-          <a href="#home">Home</a>
+          <a href="#about">About Us</a>
+          <a href="#gallery">Gallery</a>
           <a href="#arsenal">Arsenal</a>
           <a href="#calculator">Calculator</a>
+          <a href="#game">Game</a>
           <a href="#github">GitHub</a>
         </div>
-        <button class="mobile-menu-btn">☰</button>
+        <button class="mobile-menu-btn" aria-label="Open mobile menu">☰</button>
       </nav>
     </div>
   </header>
+  
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="close-menu-btn" id="close-menu-btn" aria-label="Close mobile menu">&times;</button>
+    <a href="#about">About Us</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#arsenal">Arsenal</a>
+    <a href="#calculator">Calculator</a>
+    <a href="#game">Game</a>
+    <a href="#github">GitHub</a>
+    <a href="#" class="social-nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22 12C22 6.48 17.52 2 12 2C6.48 2 2 6.48 2 12C2 16.84 5.44 20.87 10 21.8V15H8V12H10V9.5C10 7.57 11.57 6 13.5 6H16V9H14C13.45 9 13 9.45 13 10V12H16V15H13V21.95C18.05 21.45 22 17.19 22 12Z"/>
+    </svg> Facebook</a>
+    <a href="#" class="social-nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22.46 6C21.69 6.35 20.86 6.58 20 6.69C20.88 6.16 21.56 5.32 21.88 4.31C21.05 4.81 20.13 5.16 19.16 5.36C18.37 4.5 17.26 4 16 4C13.65 4 11.73 5.92 11.73 8.29C11.73 8.63 11.77 8.96 11.84 9.27C8.28 9.09 5.11 7.38 3 4.79C2.63 5.42 2.42 6.16 2.42 6.94C2.42 8.43 3.17 9.75 4.33 10.5C3.62 10.5 2.96 10.3 2.38 10V10.03C2.38 12.11 3.86 13.85 5.82 14.24C5.46 14.34 5.08 14.39 4.69 14.39C4.42 14.39 4.15 14.36 3.89 14.31C4.43 16 6 17.26 7.89 17.29C6.43 18.45 4.58 19.13 2.56 19.13C2.22 19.13 1.88 19.11 1.54 19.07C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79C20.33 8.6 20.33 8.42 20.32 8.23C21.16 7.63 21.88 6.87 22.46 6Z"/>
+    </svg> Twitter</a>
+    <a href="#" class="social-nav-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 19.4 19.4 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2ZM7.6 4C5.61 4 4 5.61 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4C18.39 20 20 18.39 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6ZM17.25 5.5C17.94 5.5 18.5 6.06 18.5 6.75C18.5 7.44 17.94 8 17.25 8C16.56 8 16 7.44 16 6.75C16 6.06 16.56 5.5 17.25 5.5ZM12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z"/>
+    </svg> Instagram</a>
+  </div>
+  
+  <!-- Menu Overlay -->
+  <div class="menu-overlay" id="menu-overlay"></div>
 
-  <section id="home" class="hero">
+  <main id="main-content">
+  <section id="about" class="section about-section">
     <div class="container">
-      <div class="hero-content">
-        <h1>Our Combat Robots</h1>
-        <p>Check out the battle bots we've designed and built as a team for competitions!</p>
-        <a href="#arsenal" class="btn btn-primary">View Our Robots</a>
-        <a href="#calculator" class="btn btn-secondary">Robot Calculator</a>
+      <div class="section-header">
+        <h2 class="section-title">About TMU BattleBots</h2>
+        <p class="section-subtitle">Who we are and What we do</p>
+      </div>
+      
+      <div class="about-content">
+        <div class="about-image">
+          <img src="images/battlebots.jpeg" alt="TMU BattleBots Team">
+        </div>
+        <div class="about-text">
+          <h3>Our Mission</h3>
+          <p>TMU BattleBots is a student-run club focused on designing, building, and competing with combat robots across multiple weight classes. Based at Toronto Metropolitan University, our team brings together students passionate about engineering, robotics, and competitive design.</p>
+          <p>Our goal is to foster a collaborative and innovative environment where students can develop their skills and bring their ideas to life.</p>
+
+          <h3>Our Team</h3>
+          <p>Led by our captains Ammar & Palak, our diverse team includes members specializing in mechanical design, electrical systems, programming, and combat strategy. We work collaboratively to push the boundaries of combat robotics, developing innovative solutions for weapon systems, drive mechanisms, and control software.</p>
+        </div>
       </div>
     </div>
   </section>
-
+  
   <section id="arsenal" class="section">
     <div class="container">
       <div class="section-header">
@@ -44,14 +84,42 @@
         <p class="section-subtitle">Browse our collection of combat robots across different weight classes</p>
       </div>
 
-      <div class="filters">
-        <button class="filter-btn active" data-category="all">All Bots</button>
-        <button class="filter-btn" data-category="1lb">1lb Class</button>
-        <button class="filter-btn" data-category="3lb">3lb Class</button>
-        <button class="filter-btn" data-category="30lb">30lb Class</button>
+      <div class="search-section">
+        <div class="search-container">
+          <div class="search-bar">
+            <input type="text" id="bot-search" class="search-input" placeholder="Search robots by name or weapon..." aria-label="Search robots">
+            <button class="search-button" id="search-button" aria-label="Search">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          
+          <div class="filter-options">
+            <select id="weapon-filter" class="filter-btn" aria-label="Filter by weapon type">
+              <option value="">All Weapons</option>
+              <option value="Vertical spinner">Vertical Spinner</option>
+              <option value="Horizontal spinner">Horizontal Spinner</option>
+              <option value="Pneumatic flipper">Pneumatic Flipper</option>
+              <option value="Overhead axe">Overhead Axe</option>
+              <option value="Overhead hammer">Overhead Hammer</option>
+              <option value="Hydraulic crusher">Hydraulic Crusher</option>
+            </select>
+            <button id="reset-filters" class="filter-btn" aria-label="Reset all filters">Reset</button>
+          </div>
+        </div>
       </div>
 
-      <div class="bots-grid">
+      <div class="filters" role="tablist" aria-label="Weight class filters">
+        <button class="filter-btn active" data-category="all" role="tab" aria-selected="true" aria-controls="all-bots">All Bots</button>
+        <button class="filter-btn" data-category="1lb" role="tab" aria-selected="false" aria-controls="1lb-bots">1lb Class</button>
+        <button class="filter-btn" data-category="3lb" role="tab" aria-selected="false" aria-controls="3lb-bots">3lb Class</button>
+        <button class="filter-btn" data-category="30lb" role="tab" aria-selected="false" aria-controls="30lb-bots">30lb Class</button>
+      </div>
+
+      <div id="search-results" class="search-results" aria-live="polite" aria-atomic="true"></div>
+      
+      <div class="bots-grid" id="bots-grid" role="region" aria-label="Robot collection">
         <!-- Bot cards will be generated here by JavaScript -->
       </div>
     </div>
@@ -133,6 +201,104 @@
     </div>
   </section>
 
+  <section id="gallery" class="section gallery-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">BattleBots Photo Gallery</h2>
+        <p class="section-subtitle">See our team & robots in action!</p>
+      </div>
+      
+      <div class="image-gallery">
+        <div class="gallery-container">
+          <div class="gallery-track">
+            <!-- Use the same placeholder for now, but these would be for different images -->
+            <div class="gallery-slide active">
+              <img src="images/placeholder.png" alt="Image 1">
+              <div class="slide-caption">Image Caption 1</div>
+            </div>
+            <div class="gallery-slide">
+              <img src="images/placeholder.png" alt="Image 2">
+              <div class="slide-caption">Image Caption 2</div>
+            </div>
+            <div class="gallery-slide">
+              <img src="images/placeholder.png" alt="Image 3">
+              <div class="slide-caption">Image Caption 3</div>
+            </div>
+            <div class="gallery-slide">
+              <img src="images/placeholder.png" alt="Image 4">
+              <div class="slide-caption">Image Caption 4</div>
+            </div>
+            <div class="gallery-slide">
+              <img src="images/placeholder.png" alt="Image 5">
+              <div class="slide-caption">Image Caption 5</div>
+            </div>
+            <div class="gallery-slide">
+              <img src="images/placeholder.png" alt="Image 6">
+              <div class="slide-caption">Image Caption 6</div>
+            </div>
+            <div class="gallery-slide">
+              <img src="images/placeholder.png" alt="Image 7">
+              <div class="slide-caption">Image Caption 7</div>
+            </div>
+            <div class="gallery-slide">
+              <img src="images/placeholder.png" alt="Image 8">
+              <div class="slide-caption">Image Caption 8</div>
+            </div>
+            <div class="gallery-slide">
+              <img src="images/placeholder.png" alt="Image 9">
+              <div class="slide-caption">Image Caption 9</div>
+            </div>
+            <div class="gallery-slide">
+              <img src="images/placeholder.png" alt="Image 10">
+              <div class="slide-caption">Image Caption 10</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-nav">
+          <button class="gallery-indicator active" data-index="0" aria-label="View image 1"></button>
+          <button class="gallery-indicator" data-index="1" aria-label="View image 2"></button>
+          <button class="gallery-indicator" data-index="2" aria-label="View image 3"></button>
+          <button class="gallery-indicator" data-index="3" aria-label="View image 4"></button>
+          <button class="gallery-indicator" data-index="4" aria-label="View image 5"></button>
+          <button class="gallery-indicator" data-index="5" aria-label="View image 6"></button>
+          <button class="gallery-indicator" data-index="6" aria-label="View image 7"></button>
+          <button class="gallery-indicator" data-index="7" aria-label="View image 8"></button>
+          <button class="gallery-indicator" data-index="8" aria-label="View image 9"></button>
+          <button class="gallery-indicator" data-index="9" aria-label="View image 10"></button>
+        </div>
+        
+        <div class="gallery-controls">
+          <button class="gallery-button prev" aria-label="Previous image">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="gallery-button next" aria-label="Next image">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="game" class="section game-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">BattleBots Arena</h2>
+        <p class="section-subtitle">Play our interactive BattleBots game via our itch.io page!</p>
+      </div>
+      
+      <div class="game-container">
+        <iframe frameborder="0" src="https://itch.io/embed/3870664" width="552" height="167">
+          <a href="https://amynjiwani.itch.io/tmu-battlebots-simulation">TMU-Battlebots-Simulation by amyn.jiwani</a>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
   <section id="github" class="section github">
     <div class="container">
       <div class="github-content">
@@ -147,13 +313,16 @@
       </div>
     </div>
   </section>
+  </main>
 
   <footer>
     <div class="container">
       <div class="footer-links">
-        <a href="#home" class="footer-link">Home</a>
+        <a href="#about" class="footer-link">About Us</a>
         <a href="#arsenal" class="footer-link">Arsenal</a>
         <a href="#calculator" class="footer-link">Calculator</a>
+         <a href="#gallery" class="footer-link">Gallery</a>
+        <a href="#game" class="footer-link">Game</a>
         <a href="#github" class="footer-link">GitHub</a>
       </div>
 
@@ -187,18 +356,22 @@
   </footer>
 
   <!-- Bot Details Modal -->
-  <div id="bot-modal" class="modal">
+  <div id="bot-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true" aria-hidden="true">
     <div class="modal-content">
       <div class="modal-header">
         <h2 id="modal-title">Bot Details</h2>
-        <span class="close-modal">&times;</span>
+        <button class="close-modal" aria-label="Close modal">&times;</button>
       </div>
-      <div class="modal-body" id="modal-body">
+      <div class="modal-body" id="modal-body" tabindex="0">
         <!-- Content will be dynamically inserted here -->
       </div>
     </div>
   </div>
+  
+  <!-- Skip to Main Content Link for Keyboard Users -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <script src="script.js"></script>
+  <!-- Load the script with defer attribute to ensure it runs after the DOM is loaded -->
+  <script src="script.js" defer></script>
 </body>
 </html>

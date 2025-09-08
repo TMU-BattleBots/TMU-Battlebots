@@ -192,8 +192,8 @@ const bots = [
     }
   ];
   
-  // DOM Elements
-  const botsGrid = document.querySelector('.bots-grid');
+  // DOM Elements - Using getElementById for more reliable element selection
+  const botsGrid = document.getElementById('bots-grid');
   const filterBtns = document.querySelectorAll('.filter-btn');
   const modal = document.getElementById('bot-modal');
   const closeModal = document.querySelector('.close-modal');
@@ -207,19 +207,28 @@ const bots = [
   
   // Initialize the bots display
   function displayBots(category = 'all') {
+    // Check if botsGrid exists
+    if (!botsGrid) {
+      console.error('Error: botsGrid element not found');
+      return;
+    }
+    
+    // Clear existing content
     botsGrid.innerHTML = '';
     
+    // Filter bots by category
     const filteredBots = category === 'all' 
       ? bots 
       : bots.filter(bot => bot.category === category);
     
+    // Create bot cards
     filteredBots.forEach(bot => {
       const botCard = document.createElement('div');
       botCard.className = 'bot-card';
       botCard.setAttribute('data-id', bot.id);
       botCard.innerHTML = `
         <div class="bot-img">
-          <img src="${bot.image}" alt="${bot.name}">
+          <img src="${bot.image}" alt="${bot.name} robot">
         </div>
         <div class="bot-info">
           <span class="bot-category">${bot.category}</span>
@@ -234,7 +243,7 @@ const bots = [
       botsGrid.appendChild(botCard);
     });
   
-    // Add event listeners to the entire bot cards
+    // Add event listeners to the bot cards
     document.querySelectorAll('.bot-card').forEach(card => {
       card.addEventListener('click', (e) => {
         // If the GitHub link was clicked, don't open the modal
@@ -247,15 +256,22 @@ const bots = [
         openBotModal(botId);
       });
     });
+    
+    console.log(`Displayed ${filteredBots.length} bots in category: ${category}`);
   }
   
   // Open the bot details modal
   function openBotModal(botId) {
     const bot = bots.find(b => b.id === botId);
-    if (!bot) return;
+    if (!bot) {
+      console.error(`Bot with id ${botId} not found`);
+      return;
+    }
   
+    // Set modal title
     modalTitle.textContent = bot.name;
     
+    // Populate modal content
     modalBody.innerHTML = `
       <div class="modal-img">
         <img src="${bot.image}" alt="${bot.name}">
@@ -281,6 +297,7 @@ const bots = [
       </div>
     `;
   
+    // Show the modal
     modal.classList.add('open');
   }
   
@@ -369,24 +386,39 @@ const bots = [
   }
   
   // Event Listeners
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      displayBots(btn.getAttribute('data-category'));
+  if (filterBtns) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        displayBots(btn.getAttribute('data-category'));
+      });
     });
-  });
+  }
   
-  closeModal.addEventListener('click', closeModalFunc);
-  window.addEventListener('click', (e) => {
-    if (e.target === modal) closeModalFunc();
-  });
+  if (closeModal) {
+    closeModal.addEventListener('click', closeModalFunc);
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) closeModalFunc();
+    });
+  }
   
-  mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-  document.getElementById('show-basic-calc').addEventListener('click', toggleCalculator);
-  document.getElementById('calculate-btn').addEventListener('click', calculateSpecs);
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+  }
+  
+  const showBasicCalcBtn = document.getElementById('show-basic-calc');
+  if (showBasicCalcBtn) {
+    showBasicCalcBtn.addEventListener('click', toggleCalculator);
+  }
+  
+  const calcBtn = document.getElementById('calculate-btn');
+  if (calcBtn) {
+    calcBtn.addEventListener('click', calculateSpecs);
+  }
   
   // Initialize when page loads
   document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM fully loaded - initializing bots display');
     displayBots();
   });
