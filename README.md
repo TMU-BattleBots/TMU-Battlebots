@@ -63,34 +63,6 @@ TMU-Battlebots-main/
 └── README.md                # This documentation file
 ```
 
-## Installation
-
-To set up a local copy of the website:
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/TMU-BattleBots/TMU-Battlebots.git
-   ```
-
-2. Navigate to the project directory:
-   ```bash
-   cd TMU-Battlebots/TMU-Battlebots-main
-   ```
-
-3. Open `index.html` in your preferred web browser:
-   ```bash
-   # On Windows
-   start index.html
-   
-   # On macOS
-   open index.html
-   
-   # On Linux
-   xdg-open index.html
-   ```
-
-No additional dependencies are required to view the basic website.
-
 ## Usage
 
 The website is organized into several sections:
@@ -106,9 +78,9 @@ The website is organized into several sections:
 
 Our team develops robots in several weight classes:
 
-- **1lb (Antweight)**: Mighty Mouse, Victorious Monty, Lebot James
-- **3lb (Beetleweight)**: Pancake Flipper, Chop Chop, Terminated
-- **30lb (Featherweight)**: Richard
+- **1lb**: Mighty Mouse, Victorious Monty, Lebot James
+- **3lb**: Pancake Flipper, Chop Chop, Terminated
+- **30lb**: Richard
 
 Each robot features unique weapons and strategies:
 - Vertical spinners
@@ -145,29 +117,3 @@ Future implementations will include:
 - Weapon optimization algorithms
 - Drive system control improvements
 - Self-balancing systems
-
-## Contributing
-
-We welcome contributions from team members and the community! To contribute:
-
-1. Fork this repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
-
-Please ensure your code follows our style guidelines and includes appropriate documentation.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contact
-
-- **Website**: [tmu-battlebots.ca](https://tmu-battlebots.ca)
-- **Email**: battlebots@torontomu.ca
-- **Social Media**: [@TMUBattleBots](https://twitter.com/TMUBattleBots)
-
----
-
-© 2025 TMU BattleBots Club. All rights reserved.
