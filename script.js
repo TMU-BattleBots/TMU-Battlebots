@@ -192,8 +192,8 @@ const bots = [
     }
   ];
   
-  // DOM Elements
-  const botsGrid = document.querySelector('.bots-grid');
+  // DOM Elements - Using getElementById for more reliable element selection
+  const botsGrid = document.getElementById('bots-grid');
   const filterBtns = document.querySelectorAll('.filter-btn');
   const modal = document.getElementById('bot-modal');
   const closeModal = document.querySelector('.close-modal');
@@ -207,19 +207,28 @@ const bots = [
   
   // Initialize the bots display
   function displayBots(category = 'all') {
+    // Check if botsGrid exists
+    if (!botsGrid) {
+      console.error('Error: botsGrid element not found');
+      return;
+    }
+    
+    // Clear existing content
     botsGrid.innerHTML = '';
     
+    // Filter bots by category
     const filteredBots = category === 'all' 
       ? bots 
       : bots.filter(bot => bot.category === category);
     
+    // Create bot cards
     filteredBots.forEach(bot => {
       const botCard = document.createElement('div');
       botCard.className = 'bot-card';
       botCard.setAttribute('data-id', bot.id);
       botCard.innerHTML = `
         <div class="bot-img">
-          <img src="${bot.image}" alt="${bot.name}">
+          <img src="${bot.image}" alt="${bot.name} robot">
         </div>
         <div class="bot-info">
           <span class="bot-category">${bot.category}</span>
@@ -234,7 +243,7 @@ const bots = [
       botsGrid.appendChild(botCard);
     });
   
-    // Add event listeners to the entire bot cards
+    // Add event listeners to the bot cards
     document.querySelectorAll('.bot-card').forEach(card => {
       card.addEventListener('click', (e) => {
         // If the GitHub link was clicked, don't open the modal
@@ -247,15 +256,22 @@ const bots = [
         openBotModal(botId);
       });
     });
+    
+    console.log(`Displayed ${filteredBots.length} bots in category: ${category}`);
   }
   
   // Open the bot details modal
   function openBotModal(botId) {
     const bot = bots.find(b => b.id === botId);
-    if (!bot) return;
+    if (!bot) {
+      console.error(`Bot with id ${botId} not found`);
+      return;
+    }
   
+    // Set modal title
     modalTitle.textContent = bot.name;
     
+    // Populate modal content
     modalBody.innerHTML = `
       <div class="modal-img">
         <img src="${bot.image}" alt="${bot.name}">
@@ -281,6 +297,7 @@ const bots = [
       </div>
     `;
   
+    // Show the modal
     modal.classList.add('open');
   }
   
@@ -291,7 +308,19 @@ const bots = [
   
   // Toggle mobile menu
   function toggleMobileMenu() {
-    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
+    
+    if (!mobileMenu || !menuOverlay) {
+      console.error('Mobile menu elements not found');
+      return;
+    }
+    
+    mobileMenu.classList.toggle('open');
+    menuOverlay.classList.toggle('open');
+    
+    // Prevent scrolling when menu is open
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
   }
   
   // Show/hide basic calculator
@@ -369,24 +398,241 @@ const bots = [
   }
   
   // Event Listeners
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      displayBots(btn.getAttribute('data-category'));
+  if (filterBtns) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        displayBots(btn.getAttribute('data-category'));
+      });
     });
-  });
+  }
   
-  closeModal.addEventListener('click', closeModalFunc);
-  window.addEventListener('click', (e) => {
-    if (e.target === modal) closeModalFunc();
-  });
+  if (closeModal) {
+    closeModal.addEventListener('click', closeModalFunc);
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) closeModalFunc();
+    });
+  }
   
-  mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-  document.getElementById('show-basic-calc').addEventListener('click', toggleCalculator);
-  document.getElementById('calculate-btn').addEventListener('click', calculateSpecs);
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+  }
   
+  // Add event listener for the close menu button
+  const closeMenuBtn = document.getElementById('close-menu-btn');
+  if (closeMenuBtn) {
+    closeMenuBtn.addEventListener('click', toggleMobileMenu);
+  }
+  
+  // Add event listener for the menu overlay
+  const menuOverlay = document.getElementById('menu-overlay');
+  if (menuOverlay) {
+    menuOverlay.addEventListener('click', toggleMobileMenu);
+  }
+  
+  // Add event listeners to close the mobile menu when clicking on a link
+  const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+  if (mobileMenuLinks) {
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        toggleMobileMenu();
+      });
+    });
+  }
+  
+  const showBasicCalcBtn = document.getElementById('show-basic-calc');
+  if (showBasicCalcBtn) {
+    showBasicCalcBtn.addEventListener('click', toggleCalculator);
+  }
+  
+  const calcBtn = document.getElementById('calculate-btn');
+  if (calcBtn) {
+    calcBtn.addEventListener('click', calculateSpecs);
+  }
+  
+  // Gallery functionality - Commented out for this release
+  /*
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.gallery-slide');
+  const indicators = document.querySelectorAll('.gallery-indicator');
+  const prevButton = document.querySelector('.gallery-button.prev');
+  const nextButton = document.querySelector('.gallery-button.next');
+
+  // Function to show a specific slide
+  function showSlide(index) {
+    // Safety check
+    if (!slides || !indicators) {
+      console.error('Gallery elements not found');
+      return;
+    }
+    
+    // Ensure index is within bounds
+    if (index < 0) {
+      index = slides.length - 1;
+    } else if (index >= slides.length) {
+      index = 0;
+    }
+    
+    // Hide all slides and remove active class from indicators
+    slides.forEach(slide => slide.classList.remove('active'));
+    indicators.forEach(indicator => indicator.classList.remove('active'));
+    
+    // Show the current slide and update active indicator
+    slides[index].classList.add('active');
+    indicators[index].classList.add('active');
+    
+    // Update current slide index
+    currentSlide = index;
+  }
+  */
+
+  // Initialize gallery functions - Commented out for this release
+  /*
+  function initGallery() {
+    if (!slides || slides.length === 0) {
+      console.warn('Gallery slides not found, skipping gallery initialization');
+      return;
+    }
+    
+    if (!indicators || !prevButton || !nextButton) {
+      console.warn('Gallery controls not found, attempting partial initialization');
+    }
+    
+    // Add click event to prev button
+    if (prevButton) {
+      prevButton.addEventListener('click', () => {
+        showSlide(currentSlide - 1);
+      });
+    }
+    
+    // Add click event to next button
+    if (nextButton) {
+      nextButton.addEventListener('click', () => {
+        showSlide(currentSlide + 1);
+      });
+    }
+    
+    // Add click events to indicators
+    if (indicators) {
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+          showSlide(index);
+        });
+      });
+    }
+    
+    // Add keyboard navigation for accessibility
+    document.addEventListener('keydown', (e) => {
+      if (isElementInViewport(document.querySelector('.gallery-section'))) {
+        if (e.key === 'ArrowLeft') {
+          showSlide(currentSlide - 1);
+        } else if (e.key === 'ArrowRight') {
+          showSlide(currentSlide + 1);
+        }
+      }
+    });
+    
+    // Set up touch swipe for mobile
+    setupGallerySwipe();
+    
+    // Auto-advance slides every 6 seconds
+    let autoAdvanceInterval = setInterval(() => {
+      if (document.visibilityState === 'visible' && 
+          isElementInViewport(document.querySelector('.gallery-section'))) {
+        showSlide(currentSlide + 1);
+      }
+    }, 6000);
+    
+    // Pause auto-advance on hover/touch
+    const galleryContainer = document.querySelector('.gallery-container');
+    if (galleryContainer) {
+      galleryContainer.addEventListener('mouseenter', () => clearInterval(autoAdvanceInterval));
+      galleryContainer.addEventListener('touchstart', () => clearInterval(autoAdvanceInterval), { passive: true });
+      
+      galleryContainer.addEventListener('mouseleave', () => {
+        // Resume auto-advance when mouse leaves
+        autoAdvanceInterval = setInterval(() => {
+          if (document.visibilityState === 'visible' && 
+              isElementInViewport(document.querySelector('.gallery-section'))) {
+            showSlide(currentSlide + 1);
+          }
+        }, 6000);
+      });
+    }
+    
+    // Show the first slide initially
+    showSlide(0);
+    
+    console.log('Gallery initialized successfully');
+  }
+  */
+  
+  // Helper function to check if an element is in the viewport
+  function isElementInViewport(el) {
+    if (!el) return false;
+    
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.bottom >= 0 &&
+      rect.left <= (window.innerWidth || document.documentElement.clientWidth) &&
+      rect.right >= 0
+    );
+  }
+  
+  // Add swipe gesture support for mobile devices - Commented out for this release
+  /*
+  function setupGallerySwipe() {
+    const galleryTrack = document.querySelector('.gallery-track');
+    
+    if (!galleryTrack) return;
+    
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    galleryTrack.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    galleryTrack.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+    
+    function handleSwipe() {
+      // Calculate the swipe distance
+      const swipeDistance = touchEndX - touchStartX;
+      
+      // Require a minimum swipe distance to prevent accidental swipes
+      if (Math.abs(swipeDistance) < 50) return;
+      
+      if (swipeDistance > 0) {
+        // Swiped right - go to previous slide
+        showSlide(currentSlide - 1);
+      } else {
+        // Swiped left - go to next slide
+        showSlide(currentSlide + 1);
+      }
+    }
+  }
+  */
+
   // Initialize when page loads
   document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM fully loaded - initializing bots display');
     displayBots();
+    
+    // Initialize gallery - Commented out for this release
+    // initGallery();
+    
+    // Fix for iOS 100vh issue in mobile browsers
+    function setViewportHeight() {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    }
+    
+    // Set the height initially and on resize
+    setViewportHeight();
+    window.addEventListener('resize', setViewportHeight);
+    window.addEventListener('orientationchange', setViewportHeight);
   });
