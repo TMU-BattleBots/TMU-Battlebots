@@ -68,11 +68,11 @@ TMU-Battlebots-main/
 The website is organized into several sections:
 
 - **About Us**: Information about our team and mission
-- **Gallery**: Photos of our robots and team activities
 - **Robot Arsenal**: Catalog of our combat robots with specifications
 - **Calculator**: Tools for designing and optimizing combat robots
 - **Game**: Link to our interactive BattleBots simulation game
 - **GitHub**: Link to our GitHub organization for CAD files and code
+- Note: Code is present for a **Gallery** (Photos of our robots and team activities) - but commented out at present
 
 ## Robot Arsenal
 
@@ -117,3 +117,4 @@ Future implementations will include:
 - Weapon optimization algorithms
 - Drive system control improvements
 - Self-balancing systems
+
