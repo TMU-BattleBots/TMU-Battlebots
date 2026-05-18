@@ -1,11 +1,13 @@
-# TMU BattleBots
+# TMU BattleBots Website (Public Archive)
 
 <p align="center">
   <img src="./images/logo.png" alt="TMU BattleBots Logo" width="150">
 </p>
 
 <p align="center">
-  The official website for Toronto Metropolitan University's BattleBots team - showcasing our robot designs, competition achievements, and technical resources.
+  Note: This site is no longer in use and may be set to private/archived in a few months, once our current site is widely available/finalized.
+  
+  This site was previously the primary space for TMU Battlebots, where we shared our robot designs, competition achievements, and technical resources.
 </p>
 
 <p align="center">
